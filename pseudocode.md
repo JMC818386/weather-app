@@ -1,4 +1,4 @@
-### Weather App Project
+# Weather App Project
 
 ## Concept
 - Use and external API
@@ -41,21 +41,20 @@
 //End Program
 
 ## HTML Elements
-**Page**
-- `<container>` entire app
-“appContainer”
-**Organism**
-**Molecule**
+### Page
+- `<container>` entire app “appContainer”
+### Organism
+### Molecule
 - `<div>` top input area “inputContainer”
 - `<input>` field for zip code
 - `<button>` get weather
-**Molecule**
+### Molecule
 - `<div>` displayed elements “outputContainer”
 - `<div>` city data “cityContainer”
 - `<div>` temperature data “tempContainer”
 - `<div>` condition data“conditionContainer”
 - `<div>` other info data“otherInfoContainer”
-**Atoms**
+### Atoms
 - `<h2>` data headers
 - `<p>` data text
 
