@@ -5,7 +5,6 @@ let inputField = document.getElementById("inputField");
 //Possible string literal or string cat
 let zipCode = 40517;
 
-
 //Declare globally scoped variable to target input id
 let getWeatherBtn = document.getElementById("getWeatherBtn");
 
@@ -48,8 +47,6 @@ function onLoad() {
     x.style.display = "none";
   }
 }
-
-
 
 function getWeatherData() {
     //If zipCode input doesn't work globally, place locally in function
