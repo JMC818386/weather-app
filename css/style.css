@@ -22,6 +22,18 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+#kelvinText {
+    font-size: 25px;
+}
+
+#farenText {
+    font-size: 25px;
+}
+
+#celsiusText {
+    font-size: 25px;
+}
+
 .conditionContainer {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
