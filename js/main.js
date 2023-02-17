@@ -16,12 +16,6 @@ let celsiusText = document.getElementById("celsiusText");
 let conditionText = document.getElementById("conditionText");
 let otherInfoText = document.getElementById("otherInfoText");
 
-/* function getInputValue(){
-  // Selecting the input element and get its value 
-  var inputVal = document.getElementById("inputField").value;
-  // Console.log the value
-  console.log(inputVal);
-} */
 
 function getInputValue(){
   // Selecting the input element and get its value 
