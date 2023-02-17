@@ -3,7 +3,7 @@ let inputField = document.getElementById("inputField");
 
 //Figure out how to assign value from input field zipCode variable
 //Possible string literal or string cat
-let zipCode = 40517;
+let zipCode;
 
 //Declare globally scoped variable to target input id
 let getWeatherBtn = document.getElementById("getWeatherBtn");
@@ -15,20 +15,22 @@ let farenText = document.getElementById("farenText");
 let celsiusText = document.getElementById("celsiusText");
 let conditionText = document.getElementById("conditionText");
 let otherInfoText = document.getElementById("otherInfoText");
-
+let url;
+let outputContainer = document.getElementById("outputContainer");
 /*-------------------------------------------------*/
 
 function getInputValue(){
   // Selecting the input element and get its value 
-  var inputVal = document.getElementById("inputField").value;
+  zipCode = document.getElementById("inputField").value;
+  url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=68793cbcde883e015990d3ae3a5f2cee`;
   // Console.log the value
-  console.log(inputVal);
+  console.log(zipCode);
 }
 
 /*-------------------------------------------------*/
 
 //Delcare variable holding api url
-const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=68793cbcde883e015990d3ae3a5f2cee`;
+
 //Delcare variable holding api key
 /* const apiKey = '68793cbcde883e015990d3ae3a5f2cee'; */
 
@@ -38,9 +40,9 @@ const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&a
 function onLoad() {
   //initializes on page load
   //hides html outputContainer, shows html inputContainer
-  var pageLoad = document.getElementById("outputContainer");
-    pageLoad.style.display = "none";
-  }
+outputContainer.hidden = true;
+
+}
 
   /*-------------------------------------------------*/
 
@@ -48,12 +50,14 @@ function getWeatherData() {
     //If zipCode input doesn't work globally, place locally in function
     //possible gotcha**
   //Run axios function to get api data
+  getInputValue()
+  console.log(url);
   axios.get(url)
     .then(function (response) {
       // handle success
       console.log(response);
-      getInputValue(response.data.zip)
       populateText(response.data);
+      outputContainer.hidden = false;
     })
     .catch(function (error) {
       // handle error
@@ -71,6 +75,7 @@ function getWeatherData() {
   valNum = parseFloat(valNum);
   document.getElementById("farenText").innerHTML=((valNum-273.15)*1.8)+32;
 } */
+
 
 //Create function to convert kelvin to celsius
 /* function temperatureConverter(valNum) {
@@ -93,8 +98,10 @@ function populateText(obj) {
   tempHeaderText.innerText = "Temperature";
    //Set innerText to data + string
   kelvinText.innerText = `${obj.main.temp} K`;
-  farenText.innerText = `${obj.main.temp} F`;
-  celsiusText.innerText = `${obj.main.temp} C`;
+  let farenValue = Math.round((obj.main.temp-273.15)*(9/5)+32);
+  farenText.innerText = farenValue + " F";
+  let celsiusValue = Math.round((obj.main.temp-273.15));
+  celsiusText.innerText = celsiusValue + " C";
 
   //Set innerText to header with string
   conditionHeaderText.innerText = "Condition";
@@ -104,7 +111,7 @@ function populateText(obj) {
   //Set innerText to header with string
   otherInfoHeaderText.innerText = "Other Information";
   //Set innerText to data
-  otherInfoText.innerText = `Feels Like: ${obj.main.feels_like}`;
+  otherInfoText.innerText = `Feels Like: ${obj.main.feels_like} K`;
 }
 
 /*-------------------------------------------------*/
@@ -115,3 +122,4 @@ function populateText(obj) {
   getWeatherBtn.addEventListener("click", getWeatherData);
   getWeatherBtn.addEventListener("click", getInputValue);
     //takes zipcode from input
+    onLoad()
