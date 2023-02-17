@@ -16,6 +16,7 @@ let celsiusText = document.getElementById("celsiusText");
 let conditionText = document.getElementById("conditionText");
 let otherInfoText = document.getElementById("otherInfoText");
 
+/*-------------------------------------------------*/
 
 function getInputValue(){
   // Selecting the input element and get its value 
@@ -24,23 +25,24 @@ function getInputValue(){
   console.log(inputVal);
 }
 
+/*-------------------------------------------------*/
+
 //Delcare variable holding api url
 const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode},us&appid=68793cbcde883e015990d3ae3a5f2cee`;
 //Delcare variable holding api key
 /* const apiKey = '68793cbcde883e015990d3ae3a5f2cee'; */
 
+/*-------------------------------------------------*/
 
 //Initialize function to display inputField and getWeatherBtn on page load
 function onLoad() {
   //initializes on page load
   //hides html outputContainer, shows html inputContainer
-  var x = document.getElementById("outputContainer");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  var pageLoad = document.getElementById("outputContainer");
+    pageLoad.style.display = "none";
   }
-}
+
+  /*-------------------------------------------------*/
 
 function getWeatherData() {
     //If zipCode input doesn't work globally, place locally in function
@@ -62,6 +64,7 @@ function getWeatherData() {
     });
 }
 
+/*-------------------------------------------------*/
 
 //Create function to convert kelvin to fahrenheit
 /* function temperatureConverter(valNum) {
@@ -75,7 +78,8 @@ function getWeatherData() {
   document.getElementById("outputCelcius").innerHTML=valNum-273.15;
 } */
 
-  
+/*-------------------------------------------------*/
+
 //Create function to populate html id's (populateText)
 function populateText(obj) {
   //console.log(obj);
@@ -102,6 +106,8 @@ function populateText(obj) {
   //Set innerText to data
   otherInfoText.innerText = `Feels Like: ${obj.main.feels_like}`;
 }
+
+/*-------------------------------------------------*/
 
   //Event listener on getWeatherBtn click
      //gets data from api
